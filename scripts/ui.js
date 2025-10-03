@@ -65,7 +65,7 @@
     var $ind = $('#test-indicators');
     $ind.empty();
     testimonials.forEach(function(_, i){
-      var $dot = $(`<button class="w-2 h-2 rounded-full" aria-label="Testimonial ${i+1}"></button>");
+      var $dot = $(`<button class="w-2 h-2 rounded-full" aria-label="Testimonial ${i+1}"></button>`);
       $dot.css('background-color', i === index ? '#6366f1' : '#e5e7eb');
       $ind.append($dot);
     });

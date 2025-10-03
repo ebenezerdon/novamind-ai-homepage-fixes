@@ -1,0 +1,58 @@
+/* styles/main.css - custom CSS (no Tailwind directives here) */
+
+:root{
+  --bg: 255 255 255;
+}
+
+html,body{
+  height:100%;
+}
+
+body{
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background-color: rgb(var(--bg));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Cards and small refinements */
+.card{
+  transition: transform 240ms cubic-bezier(.2,.8,.2,1), box-shadow 240ms;
+}
+.card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(16,24,40,0.08);
+}
+
+/* Modal overlay transitions */
+#modal-overlay{
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+
+/* Mobile nav animation */
+#mobile-menu[hidden]{
+  display:none;
+}
+
+/* Testimonials subtle animation */
+@keyframes fade-slide{
+  from{ opacity:0; transform: translateY(6px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+.testimonial-enter{
+  animation: fade-slide 320ms ease both;
+}
+
+/* Accessibility helpers */
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; animation: none !important; }
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px){
+  .feature-bullet{ width:36px; height:36px; }
+}

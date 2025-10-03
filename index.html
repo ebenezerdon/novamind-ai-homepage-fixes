@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NovaMind AI - Build Smarter Products</title>
+  <meta name="description" content="NovaMind AI helps teams ship AI features faster with human-centered models and safe tooling.">
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind component definitions using data-teda attribute per project rules -->
+  <style type="text/tailwindcss" data-teda="tailwind-apply">
+    @layer components {
+      .btn-primary { @apply inline-flex items-center justify-center bg-indigo-600 text-white px-4 py-2 rounded-md shadow-md text-sm font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2; }
+      .btn-ghost { @apply inline-flex items-center px-3 py-2 rounded-md text-indigo-600 bg-white border border-indigo-100 hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-100; }
+      .card { @apply bg-white rounded-xl shadow-sm p-6; }
+      .feature-bullet { @apply inline-flex items-center justify-center w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 font-semibold; }
+    }
+  </style>
+
+  <!-- Custom fonts (system stack for performance) -->
+  <meta name="color-scheme" content="light dark">
+</head>
+<body class="antialiased bg-gradient-to-b from-white to-gray-50 text-gray-800 min-h-screen">
+  <header class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="w-10 h-10 flex items-center justify-center bg-indigo-600 text-white rounded-lg shadow-md" aria-hidden="true">NM</div>
+      <div>
+        <a href="#" class="text-lg font-bold leading-tight">NovaMind AI</a>
+        <p class="text-xs text-gray-500">Human-first machine intelligence</p>
+      </div>
+    </div>
+    <nav class="hidden md:flex items-center gap-4" aria-label="Primary">
+      <a href="#features" class="text-sm text-gray-700 hover:text-indigo-600 focus:outline-none">Features</a>
+      <a href="#pricing" class="text-sm text-gray-700 hover:text-indigo-600 focus:outline-none">Pricing</a>
+      <a href="#team" class="text-sm text-gray-700 hover:text-indigo-600 focus:outline-none">Team</a>
+      <button id="open-waitlist" class="btn-primary">Join Waitlist</button>
+    </nav>
+    <button id="mobile-nav-toggle" class="md:hidden btn-ghost" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+  </header>
+
+  <!-- Mobile nav -->
+  <div id="mobile-menu" class="md:hidden max-w-7xl mx-auto px-6" hidden>
+    <div class="bg-white rounded-lg p-4 shadow-sm flex flex-col gap-2">
+      <a href="#features" class="text-sm text-gray-700">Features</a>
+      <a href="#pricing" class="text-sm text-gray-700">Pricing</a>
+      <a href="#team" class="text-sm text-gray-700">Team</a>
+      <button id="mobile-waitlist" class="btn-primary mt-2">Join Waitlist</button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <main class="max-w-7xl mx-auto px-6 pt-12">
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">Ship AI features with confidence and speed</h1>
+        <p class="mt-4 text-gray-600 max-w-xl">NovaMind AI pairs compact, explainable models with an orchestration studio so teams can prototype, evaluate, and ship real-world AI experiences faster.</p>
+
+        <form id="waitlist-form" class="mt-6 flex flex-col sm:flex-row gap-3" aria-label="Waitlist sign up">
+          <label for="email" class="sr-only">Email address</label>
+          <input id="email" name="email" type="email" required placeholder="you@company.com" class="w-full sm:w-auto flex-1 rounded-md border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200" aria-invalid="false">
+          <button type="submit" class="btn-primary" id="cta-join">Join Waitlist</button>
+          <button type="button" class="btn-ghost hidden sm:inline-flex" id="demo-btn">Request a Demo</button>
+        </form>
+
+        <div id="form-feedback" class="mt-3 text-sm" role="status" aria-live="polite"></div>
+
+        <div class="mt-8 flex items-center gap-6 text-sm text-gray-500">
+          <div class="flex items-center gap-2">
+            <div class="w-9 h-9 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center font-semibold">A</div>
+            <div>
+              <div class="font-medium text-gray-800">100+</div>
+              <div class="text-gray-500">Teams onboarded</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <div class="w-9 h-9 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center font-semibold">U</div>
+            <div>
+              <div class="font-medium text-gray-800">99.9%</div>
+              <div class="text-gray-500">Uptime</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card transform -rotate-1 hover:rotate-0 transition-transform duration-500">
+          <div class="bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-md p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-xs uppercase opacity-90">Live demo</div>
+                <div class="mt-2 text-lg font-semibold">Conversational insight assistant</div>
+              </div>
+              <div class="bg-white/20 px-3 py-1 rounded">Beta</div>
+            </div>
+            <pre class="mt-3 bg-white/10 rounded p-3 text-sm overflow-x-auto" aria-hidden="true">const response = await novamind.query({ prompt: 'Summarize Q3 themes' })</pre>
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-2 gap-4">
+          <div class="card">
+            <div class="feature-bullet">1</div>
+            <h4 class="mt-3 font-semibold">Human-aligned models</h4>
+            <p class="mt-1 text-sm text-gray-600">Compact specialized models that are explainable and controllable.</p>
+          </div>
+          <div class="card">
+            <div class="feature-bullet">2</div>
+            <h4 class="mt-3 font-semibold">Studio & tooling</h4>
+            <p class="mt-1 text-sm text-gray-600">Visual editor, testing harness, and deployment workflows.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="mt-20">
+      <h2 class="text-2xl font-bold">Why teams choose NovaMind</h2>
+      <p class="mt-2 text-gray-600 max-w-2xl">A thoughtful stack for building user-facing intelligence. Focus on product, not plumbing.</p>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card" role="article" aria-labelledby="feature-prototype-fast">
+          <div class="text-indigo-600 text-2xl">⚡</div>
+          <h4 id="feature-prototype-fast" class="mt-3 font-semibold">Prototype in hours</h4>
+          <p class="mt-1 text-sm text-gray-600">Move from idea to working prototype quickly with model templates and a visual orchestration studio.</p>
+        </div>
+        <div class="card" role="article" aria-labelledby="feature-explainable">
+          <div class="text-indigo-600 text-2xl">🔍</div>
+          <h4 id="feature-explainable" class="mt-3 font-semibold">Explainable outputs</h4>
+          <p class="mt-1 text-sm text-gray-600">We log reasoning paths and provide tools to surface why the model produced results.</p>
+        </div>
+          <div class="text-indigo-600 text-2xl">🛡️</div>
+          <h4 id="feature-safe-by-default" class="mt-3 font-semibold">Safety first</h4>
+          <p class="mt-1 text-sm text-gray-600">Built-in filters, rate limits, and human-in-the-loop review to reduce risk in production.</p>
+        </div>
+        <div class="card" role="article" aria-labelledby="feature-safe-by-default">
+      </div>
+    </section>
+            <p class="mt-2 text-sm text-gray-500">Includes pre-deployment safety checks, configurable filters, and human review workflows to reduce risk.</p>
+
+    <!-- Testimonials -->
+    <section id="team" class="mt-20">
+      <h3 class="text-xl font-bold">Trusted by product teams</h3>
+      <div class="mt-6">
+        <div id="testimonials" class="relative">
+          <div class="card" id="testimonial-card" tabindex="0" aria-live="polite">
+            <!-- Testimonial content filled by JS -->
+          </div>
+
+          <div class="mt-3 flex items-center gap-3">
+            <button id="prev-test" class="btn-ghost" aria-label="Previous testimonial">Prev</button>
+            <button id="next-test" class="btn-ghost" aria-label="Next testimonial">Next</button>
+            <div id="test-indicators" class="ml-auto flex gap-2" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="mt-20 mb-20">
+      <h3 class="text-xl font-bold">Pricing</h3>
+      <p class="mt-2 text-gray-600">Clear, usage-based pricing for teams of all sizes.</p>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="card">
+          <div class="text-sm text-indigo-600 font-semibold">Starter</div>
+          <div class="mt-3 text-2xl font-bold">Free</div>
+          <p class="mt-2 text-sm text-gray-600">For early experiments and prototypes.</p>
+          <ul class="mt-4 text-sm space-y-2 text-gray-600">
+            <li>3k tokens / month</li>
+            <li>Email support</li>
+          </ul>
+          <button class="btn-primary mt-6" data-plan="starter">Get Started</button>
+        </div>
+
+        <div class="card border-2 border-indigo-100">
+          <div class="text-sm text-indigo-600 font-semibold">Team</div>
+          <div class="mt-3 text-2xl font-bold">$49 / mo</div>
+          <p class="mt-2 text-sm text-gray-600">Ship AI to users with confidence.</p>
+          <ul class="mt-4 text-sm space-y-2 text-gray-600">
+            <li>50k tokens / month</li>
+            <li>Priority support</li>
+            <li>Collaboration tools</li>
+          </ul>
+          <button class="btn-primary mt-6" data-plan="team">Start Trial</button>
+        </div>
+
+        <div class="card">
+          <div class="text-sm text-indigo-600 font-semibold">Enterprise</div>
+          <div class="mt-3 text-2xl font-bold">Custom</div>
+          <p class="mt-2 text-sm text-gray-600">SLA, SSO, private instances.</p>
+          <ul class="mt-4 text-sm space-y-2 text-gray-600">
+            <li>Dedicated support</li>
+            <li>On-prem options</li>
+          </ul>
+          <button class="btn-primary mt-6" data-plan="enterprise">Contact Sales</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-gray-100 mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-gray-600">© NovaMind AI — Built with care. <a href="https://teda.dev" class="text-indigo-600 underline">Teda.dev</a> powers prototypes.</p>
+      <div class="flex items-center gap-4">
+        <a href="#" class="text-sm text-gray-600">Privacy</a>
+        <a href="#" class="text-sm text-gray-600">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal template for demo and plan contact -->
+  <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center p-4" aria-hidden="true">
+    <div class="bg-white rounded-xl shadow-lg max-w-xl w-full" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="p-6">
+        <h4 id="modal-title" class="text-lg font-bold">Request a demo</h4>
+        <p class="text-sm text-gray-600 mt-1">Tell us about your project and we will reach out with a tailored walkthrough.</p>
+        <form id="demo-form" class="mt-4 grid grid-cols-1 gap-3">
+          <label class="sr-only" for="demo-email">Email</label>
+          <input id="demo-email" name="demo-email" type="email" placeholder="you@company.com" class="rounded-md border border-gray-200 px-3 py-2 focus:ring-2 focus:ring-indigo-200">
+          <label class="sr-only" for="demo-message">Message</label>
+          <textarea id="demo-message" name="demo-message" rows="4" placeholder="A short note about your use case" class="rounded-md border border-gray-200 px-3 py-2 focus:ring-2 focus:ring-indigo-200"></textarea>
+          <div class="flex items-center gap-3 justify-end">
+            <button type="button" id="modal-close" class="btn-ghost">Cancel</button>
+            <button type="submit" class="btn-primary">Send Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Required scripts in order (jQuery CDN then local modules). Additional module scripts are included before main.js. -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="scripts/helpers.js"></script>
+  <script src="scripts/ui.js"></script>
+  <script src="scripts/data.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
